@@ -84,6 +84,18 @@ let UsersController = class UsersController {
             "message": "DTO User created"
         };
     }
+    getUserById(id) {
+        return {
+            id: id,
+            name: 'John',
+        };
+    }
+    multipleParams(id, name) {
+        return {
+            id: id,
+            name: name,
+        };
+    }
 };
 __decorate([
     (0, common_1.Get)('users'),
@@ -140,6 +152,21 @@ __decorate([
     __metadata("design:paramtypes", [CreateUser_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUserDto", null);
+__decorate([
+    (0, common_1.Get)("get-user-by-id/:id"),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "getUserById", null);
+__decorate([
+    (0, common_1.Get)("get-user-by-name/:id/:name"),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, String]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "multipleParams", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users')
 ], UsersController);

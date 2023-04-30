@@ -97,4 +97,21 @@ export class UsersController {
 
 
 
+    @Get("get-user-by-id/:id")
+    getUserById(@Param('id') id: number) {
+        return {
+            id: id,
+            name: 'John',
+        };
+    }
+
+    @Get("get-user-by-name/:id/:name")
+    multipleParams(@Param('id') id: number, @Param('name') name: string) {
+        return {
+            id: id,
+            name: name,
+        };
+    }
+
+
 }

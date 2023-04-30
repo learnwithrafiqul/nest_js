@@ -29,4 +29,12 @@ export declare class UsersController {
     createUserDto(userData: CreateUserDto): {
         message: string;
     };
+    getUserById(id: number): {
+        id: number;
+        name: string;
+    };
+    multipleParams(id: number, name: string): {
+        id: number;
+        name: string;
+    };
 }
