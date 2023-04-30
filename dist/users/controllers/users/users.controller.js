@@ -26,7 +26,7 @@ let UsersController = class UsersController {
             {
                 id: 2,
                 name: 'Jane',
-            }
+            },
         ];
     }
     getPosts() {
@@ -40,7 +40,7 @@ let UsersController = class UsersController {
                 id: 2,
                 user: 2,
                 title: 'Post 2',
-            }
+            },
         ];
     }
     getSinglePost(id) {
@@ -61,7 +61,7 @@ let UsersController = class UsersController {
                 id: 2,
                 user: 2,
                 title: 'Comment 2',
-            }
+            },
         ];
     }
     async create(createCatDto) {
@@ -69,19 +69,19 @@ let UsersController = class UsersController {
     }
     createUser(user) {
         return {
-            "message": "User created"
+            message: 'User created',
         };
     }
     testPost(request, response) {
         console.log(request.body);
         response.json({
-            "message": "Post request tested"
+            message: 'Post request tested',
         });
     }
     createUserDto(userData) {
-        console.log("create-user-dto", userData);
+        console.log('create-user-dto', userData);
         return {
-            "message": "DTO User created"
+            message: 'DTO User created',
         };
     }
     getUserById(id) {
@@ -97,11 +97,13 @@ let UsersController = class UsersController {
         };
     }
     testQuery(sortBy) {
-        console.log("test-user-query", sortBy);
-        return [{
+        console.log('test-user-query', sortBy);
+        return [
+            {
                 id: 1,
                 name: 'John',
-            }];
+            },
+        ];
     }
 };
 __decorate([
@@ -124,7 +126,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getSinglePost", null);
 __decorate([
-    (0, common_1.Get)("post/:id/comments"),
+    (0, common_1.Get)('post/:id/comments'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -145,7 +147,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Post)("test-post"),
+    (0, common_1.Post)('test-post'),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
@@ -160,14 +162,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUserDto", null);
 __decorate([
-    (0, common_1.Get)("get-user-by-id/:id"),
+    (0, common_1.Get)('get-user-by-id/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUserById", null);
 __decorate([
-    (0, common_1.Get)("get-user-by-name/:id/:name"),
+    (0, common_1.Get)('get-user-by-name/:id/:name'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Param)('name')),
     __metadata("design:type", Function),
