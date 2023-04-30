@@ -96,6 +96,13 @@ let UsersController = class UsersController {
             name: name,
         };
     }
+    testQuery(sortBy) {
+        console.log("test-user-query", sortBy);
+        return [{
+                id: 1,
+                name: 'John',
+            }];
+    }
 };
 __decorate([
     (0, common_1.Get)('users'),
@@ -167,6 +174,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "multipleParams", null);
+__decorate([
+    (0, common_1.Get)('test-user-query'),
+    __param(0, (0, common_1.Query)('sortBy')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "testQuery", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users')
 ], UsersController);

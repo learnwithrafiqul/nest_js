@@ -37,4 +37,8 @@ export declare class UsersController {
         id: number;
         name: string;
     };
+    testQuery(sortBy: string): {
+        id: number;
+        name: string;
+    }[];
 }
