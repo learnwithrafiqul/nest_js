@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TodosController = void 0;
 const common_1 = require("@nestjs/common");
 const Todo_dto_1 = require("../../dtos/Todo.dto");
+const validate_create_todo_pipe_1 = require("../../pipes/validate-create-todo/validate-create-todo.pipe");
 const todos_service_1 = require("../../services/todos/todos.service");
 let TodosController = class TodosController {
     constructor(todosService) {
@@ -42,7 +43,7 @@ __decorate([
 ], TodosController.prototype, "getAllTodos", null);
 __decorate([
     (0, common_1.Post)('create-todo'),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_1.Body)(validate_create_todo_pipe_1.ValidateCreateTodoPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Todo_dto_1.TodoDto]),
     __metadata("design:returntype", void 0)

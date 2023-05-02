@@ -13,9 +13,16 @@ const posts_controller_1 = require("./controllers/posts/posts.controller");
 const todos_controller_1 = require("./controllers/todos/todos.controller");
 const todos_service_1 = require("./services/todos/todos.service");
 const example_middleware_1 = require("./middlewares/example/example.middleware");
+const another_middleware_1 = require("./middlewares/another/another.middleware");
 let UsersModule = class UsersModule {
     configure(consumer) {
         consumer.apply(example_middleware_1.ExampleMiddleware).forRoutes({
+            path: "/users/users",
+            method: common_1.RequestMethod.ALL
+        }, {
+            path: "/users/posts",
+            method: common_1.RequestMethod.ALL
+        }).apply(another_middleware_1.AnotherMiddleware).forRoutes({
             path: "/users/users",
             method: common_1.RequestMethod.ALL
         }, {

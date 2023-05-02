@@ -1,5 +1,6 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
 import { TodoDto } from 'src/users/dtos/Todo.dto';
+import { ValidateCreateTodoPipe } from 'src/users/pipes/validate-create-todo/validate-create-todo.pipe';
 import { TodosService } from 'src/users/services/todos/todos.service';
 
 @Controller('todos')
@@ -12,7 +13,7 @@ export class TodosController {
     }
 
     @Post('create-todo')
-    createTodo(@Body() todoData: TodoDto) {
+    createTodo(@Body(ValidateCreateTodoPipe) todoData: TodoDto) {
         return this.todosService.createTodo(todoData);
     }
 
