@@ -11,7 +11,14 @@ const common_1 = require("@nestjs/common");
 let ExampleMiddleware = class ExampleMiddleware {
     use(req, res, next) {
         console.log('ExampleMiddleware');
-        next();
+        console.log("auth header--->", req.headers.authorization);
+        const { authorization } = req.headers;
+        if (!authorization)
+            throw new common_1.HttpException("No Authorization Token", common_1.HttpStatus.FORBIDDEN);
+        if (authorization !== '123')
+            throw new common_1.HttpException("Invalid Token", common_1.HttpStatus.FORBIDDEN);
+        else
+            next();
     }
 };
 ExampleMiddleware = __decorate([

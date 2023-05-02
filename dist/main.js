@@ -15,7 +15,7 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.useGlobalPipes(new common_1.ValidationPipe());
-    await app.listen(3000);
+    await app.listen(3031);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
