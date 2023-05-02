@@ -6,27 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersService = void 0;
+exports.ExampleMiddleware = void 0;
 const common_1 = require("@nestjs/common");
-let UsersService = class UsersService {
-    constructor() {
-        this.fakeUsers = [
-            {
-                id: 1,
-                name: 'John',
-            },
-            {
-                id: 2,
-                name: 'Jane 2',
-            }
-        ];
-    }
-    fatchAllUsers() {
-        return this.fakeUsers;
+let ExampleMiddleware = class ExampleMiddleware {
+    use(req, res, next) {
+        console.log('ExampleMiddleware');
+        next();
     }
 };
-UsersService = __decorate([
+ExampleMiddleware = __decorate([
     (0, common_1.Injectable)()
-], UsersService);
-exports.UsersService = UsersService;
-//# sourceMappingURL=users.service.js.map
+], ExampleMiddleware);
+exports.ExampleMiddleware = ExampleMiddleware;
+//# sourceMappingURL=example.middleware.js.map
