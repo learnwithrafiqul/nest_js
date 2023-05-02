@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostsController = void 0;
 const common_1 = require("@nestjs/common");
 const Post_dto_1 = require("../../dtos/Post.dto");
+const auth_guard_1 = require("../../guards/auth/auth.guard");
 let PostsController = class PostsController {
     createPost(post) {
         return post;
@@ -47,6 +48,7 @@ __decorate([
 ], PostsController.prototype, "getPostById", null);
 __decorate([
     (0, common_1.Put)("update-post/:id"),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

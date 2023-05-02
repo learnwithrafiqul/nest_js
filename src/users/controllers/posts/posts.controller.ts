@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { PostDto } from 'src/users/dtos/Post.dto';
+import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 
 @Controller('posts')
 export class PostsController {
@@ -21,6 +22,7 @@ export class PostsController {
     }
 
     @Put("update-post/:id")
+    @UseGuards(AuthGuard)
     updatePost(
         @Param('id', ParseIntPipe) id: number,
         @Body() post: PostDto

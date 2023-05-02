@@ -1,9 +1,11 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseGuards } from '@nestjs/common';
 import { TodoDto } from 'src/users/dtos/Todo.dto';
+import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { ValidateCreateTodoPipe } from 'src/users/pipes/validate-create-todo/validate-create-todo.pipe';
 import { TodosService } from 'src/users/services/todos/todos.service';
 
 @Controller('todos')
+@UseGuards(AuthGuard)
 export class TodosController {
     constructor(private todosService: TodosService) { }
 

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TodosController = void 0;
 const common_1 = require("@nestjs/common");
 const Todo_dto_1 = require("../../dtos/Todo.dto");
+const auth_guard_1 = require("../../guards/auth/auth.guard");
 const validate_create_todo_pipe_1 = require("../../pipes/validate-create-todo/validate-create-todo.pipe");
 const todos_service_1 = require("../../services/todos/todos.service");
 let TodosController = class TodosController {
@@ -57,6 +58,7 @@ __decorate([
 ], TodosController.prototype, "getSingleTodo", null);
 TodosController = __decorate([
     (0, common_1.Controller)('todos'),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __metadata("design:paramtypes", [todos_service_1.TodosService])
 ], TodosController);
 exports.TodosController = TodosController;
