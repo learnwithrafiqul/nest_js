@@ -16,10 +16,13 @@ import { UsersGuard } from './users.guard';
   }),
   TypeOrmModule.forFeature([User])
   ],
-  providers: [UsersService, {
-    provide: APP_GUARD,
-    useClass: UsersGuard,
-  }],
+  providers: [UsersService,
+    // // Apply UsersGuard for all routes inside this module (UserModule)
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: UsersGuard,
+    // }
+  ],
   exports: [UsersService],
   controllers: [UsersController],
 

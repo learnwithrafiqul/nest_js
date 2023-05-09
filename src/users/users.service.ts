@@ -37,6 +37,9 @@ export class UsersService {
 
   async signIn(loginUserDto: LoginUserDto) {
     const user = await this.findOne(loginUserDto.username);
+    if (!user) {
+      throw new UnauthorizedException();
+    }
     console.log({ user });
     const isMatch = await bcrypt.compare(loginUserDto.password, user.password);
     console.log({ isMatch });
