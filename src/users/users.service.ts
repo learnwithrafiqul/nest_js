@@ -1,24 +1,31 @@
 import { Injectable } from '@nestjs/common';
-
-// This should be a real class/interface representing a user entity
-export type User = any;
+import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
+import { Repository } from 'typeorm';
+import { CreateUserDto } from './dto/create-user.dto';
+import { User } from './entities/user.entity';
+import { hashPassword } from './utils/hash_password';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+  constructor(
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find((user) => user.username === username);
+  async registerUser(createUserDto: CreateUserDto) {
+    hashPassword(createUserDto.password);
+
+    const saltOrRounds = 10;
+    const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
+    const user = this.userRepository.create({
+      username: createUserDto.username,
+      password: hash,
+    });
+    const { password, ...saveUser } = await this.userRepository.save(user);
+    return saveUser;
+  }
+
+  findOne(username: string) {
+    return this.userRepository.findOneBy({ username });
   }
 }
