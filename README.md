@@ -1,4 +1,4 @@
 ```
-❯ npm run migration:generate -- 'db/migrations/addTestFiels'
+❯ npm run migration:generate
 > migration:run
 ```
